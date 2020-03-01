@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Todos from "./Todos";
+import AddForm from "./AddForm";
 
 class App extends Component  {
 
@@ -13,12 +14,29 @@ class App extends Component  {
       ]
     }
   }
+  handleDelete = (id)=>
+  {
+    console.log("delete todo => "+id);
+    this.setState({
+      todos: this.state.todos.filter((todo)=>{
+        return todo.id !== id;
+      })
+    });
+  };
+  handleAddTodo = (todo)=>
+  {
+    this.setState({
+      todos: [...this.state.todos,todo]
+    });
+  };
   render()
   {
     return (
         <div className="todo-app container">
           <h1 className="center blue-text">List of Todos:  </h1>
-          <Todos todos={this.state.todos} />
+          <Todos todos={this.state.todos} deleteTodo={this.handleDelete} />
+          <br/>
+          <AddForm addTodo={this.handleAddTodo} />
         </div>
     );
   }
