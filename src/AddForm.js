@@ -16,7 +16,7 @@ class AddForm extends Component
     {
         console.log(event.target.value);
         $("#errorMessage").addClass("hide");
-        if(event.target.value.trim().length)
+        //if(event.target.value.trim().length)
         this.setState({
             [event.target.id] : event.target.value,
             id : parseInt(Math.random()*100)
@@ -63,7 +63,7 @@ class AddForm extends Component
         return (
             <div className=" col-md-12">
                 <form className="col-md-12" onSubmit={this.handleSubmit}>
-                    <div className="alert alert-danger col-md-4 hide" id="errorMessage">{this.handleErrorMessage()}</div>
+                    <div className="alert alert-danger col-md-4 hide" id="errorMessage">{this.handleErrorMessage(this)}</div>
                     <label htmlFor={"content"}>Add a new Todo:</label>
                     <input
                         type = "text"
